@@ -92,9 +92,12 @@ def add_log(
     sheet1.update_acell("F{}".format(next_row), cell6)
 
     
-    
-def df_cutheader_secondrow(df, col_index, col_name, cut_name ):
+def df_rename_column(df, col_index, col_name ):
     df         = df.rename(columns={df.columns[col_index] : col_name})      
+    return df
+
+def df_cutheader_secondrow(df, col_index, col_name, cut_name ):
+    #     df         = df.rename(columns={df.columns[col_index] : col_name})      
     cut_name_list = [cut_name]
     df         = df[  (~df[col_name].isin(cut_name_list))   ]
     return df
