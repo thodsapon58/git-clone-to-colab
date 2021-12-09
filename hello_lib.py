@@ -24,6 +24,7 @@ def import_gg_xlsx(file_id, file_name):
     downloaded = drive.CreateFile({'id': file_id})
     downloaded.GetContentFile(file_name)
     df_new          = pd.read_excel(file_name)
+    df_new = df_new.fillna("")
     return df_new
 
 
@@ -41,6 +42,7 @@ def import_gg_csv(file_id, file_name):
     downloaded = drive.CreateFile({'id': file_id})
     downloaded.GetContentFile(file_name)
     df_new = pd.read_csv(file_name ,  sep='\^'       )
+    df_new = df_new.fillna("")
     return df_new
 
   
