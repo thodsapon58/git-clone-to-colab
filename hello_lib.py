@@ -112,3 +112,10 @@ def df_cutheader_secondrow(df, col_index, col_name, cut_name ):
 
 # def convert_field_type_int(col_value):
 #     return str(col_value)
+
+def mapping_base_info_from_querymain(data_querymain, df):
+    df['empl_status'] = df['EMPLID'].map(data_querymain.set_index('EMPLID')['empl_status'])
+    df['empl_class'] = df['EMPLID'].map(data_querymain.set_index('EMPLID')['empl_class'])
+    df['descr_c'] = df['EMPLID'].map(data_querymain.set_index('EMPLID')['descr_c'])
+    df['descr_m'] = df['EMPLID'].map(data_querymain.set_index('EMPLID')['descr_m'])
+    return data_accrual
