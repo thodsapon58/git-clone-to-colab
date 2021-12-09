@@ -93,7 +93,7 @@ def add_log(
 
     
     
-def querymain_cutheader(df, col_index, col_name, cut_name )
+def df_cutheader_secondrow(df, col_index, col_name, cut_name )
     df         = df.rename(columns={df.columns[col_index] : col_name}      
     cut_querymain_header = [cut_name]
     df = df[   (~df[col_name].isin(cut_querymain_header)) ]  # ~ แปลวา not คือไม่เอารายการใน list นั่นมาแสดง
