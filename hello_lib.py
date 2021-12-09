@@ -23,8 +23,6 @@ def import_gg_xlsx(file_id, file_name):
 
     downloaded = drive.CreateFile({'id': file_id})
     downloaded.GetContentFile(file_name)
-    data_checkendyear_detail_before = pd.read_csv(file_name ,  sep='\^'       )
-    downloaded.GetContentFile(pattern_querymain) #ตั้งชื่อไฟล์ที่ load มาจาก google drive
     df_new          = pd.read_excel(file_name)
     return df_new
 
