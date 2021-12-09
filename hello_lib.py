@@ -93,7 +93,7 @@ def add_log(
 
     
     
-# def df_cutheader_secondrow(df, col_index, col_name, cut_name ):
-#     df         = df.rename(columns={df.columns[col_index] : col_name}      
-#     df         = df[  (~df['EMPLID'].isin(cut_name))   ]
-#     return df
+def df_cutheader_secondrow(df, col_index, col_name, cut_name ):
+    df         = df.rename(columns={df.columns[col_index] : col_name})      
+    df         = df[  (~df[col_name].isin(cut_name))   ]
+    return df
