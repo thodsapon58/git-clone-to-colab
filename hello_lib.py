@@ -11,7 +11,7 @@ def now():
   
    
 
-def import_gg_csv(file_id, file_name):
+def import_gg_xlsx(file_id, file_name):
     from pydrive.auth import GoogleAuth
     from pydrive.drive import GoogleDrive 
     from google.colab import auth 
@@ -24,7 +24,26 @@ def import_gg_csv(file_id, file_name):
     downloaded = drive.CreateFile({'id': file_id})
     downloaded.GetContentFile(file_name)
     data_checkendyear_detail_before = pd.read_csv(file_name ,  sep='\^'       )
-    return data_checkendyear_detail_before
+    downloaded.GetContentFile(pattern_querymain) #ตั้งชื่อไฟล์ที่ load มาจาก google drive
+    df_new          = pd.read_excel(file_name)
+    return df_new
+
+
+
+def import_gg_csv(file_id, file_name):
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+    downloaded = drive.CreateFile({'id': file_id})
+    downloaded.GetContentFile(file_name)
+    df_new = pd.read_csv(file_name ,  sep='\^'       )
+    return df_new
 
   
 
