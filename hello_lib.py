@@ -103,6 +103,10 @@ def df_cutheader_secondrow(df, col_index, col_name, cut_name ):
     return df
 
 
-def convert_field_type_int(df, col_name):
-    df[col_name] = df[col_name].astype(int)
-    return df
+# def convert_field_type_int(df, col_name):
+#     df[col_name] = df[col_name].astype(int)
+#     return df
+
+
+def convert_field_type_int(col_value):
+    return int(col_value)
