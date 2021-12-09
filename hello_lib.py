@@ -1,3 +1,5 @@
+import pip
+
 import datetime, pytz
 tz = pytz.timezone('Asia/Bangkok')
 
