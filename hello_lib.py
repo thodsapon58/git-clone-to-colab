@@ -7,13 +7,53 @@ def now():
     thai_year = now1.year + 543
     time_str = now1.strftime('%H:%M:%S')
     return "%d %s %d %s"%(now1.day, month_name, thai_year, time_str) # 30 ตุลาคม 2560 20:45:30
+  
     
-def fnc1():
-  print("hello")
+  
 
-import pandas as pd
-import xlsxwriter
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive 
-from google.colab import auth 
-from oauth2client.client import GoogleCredentials
+#พ่นออกมาที่ชีทนี้
+#https://docs.google.com/spreadsheets/d/1EaVFbZrNsiE9fT_DXrCoSN9PNZmzXte5WgB0SVT72PI/edit#gid=1020847031
+def next_available_row(worksheet):
+    str_list = list(filter(None, worksheet.col_values(1)))
+    return str(len(str_list)+1)
+
+
+def add_log(
+    link_log,
+    cell1,
+    cell2,
+    cell3,
+    cell4,
+    cell5,
+    cell6
+
+):
+    
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+    import gspread
+    from gspread_dataframe import set_with_dataframe
+    from gspread_dataframe import get_as_dataframe
+
+    gc = gspread.authorize(GoogleCredentials.get_application_default())
+
+
+    wb_logfile= gc.open_by_url(link_log)
+    sheet1 = wb_logfile.worksheet('Logfile Report')
+    next_row = next_available_row(sheet1)
+
+    sheet1.update_acell("A{}".format(next_row), cell1)
+    sheet1.update_acell("B{}".format(next_row), cell2)
+    sheet1.update_acell("C{}".format(next_row), cell3)
+    sheet1.update_acell("D{}".format(next_row), cell4)
+    sheet1.update_acell("E{}".format(next_row), cell5)
+    sheet1.update_acell("F{}".format(next_row), cell6)
+
