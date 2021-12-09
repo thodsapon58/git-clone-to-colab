@@ -9,9 +9,9 @@ def now():
     return "%d %s %d %s"%(now1.day, month_name, thai_year, time_str) # 30 ตุลาคม 2560 20:45:30
     
 def all_lib():
-    !ls drive
-    !pip install pydrive
-    !pip install xlsxwriter
+    ls drive
+    pip install pydrive
+    pip install xlsxwriter
     import pandas as pd
     import xlsxwriter
     from pydrive.auth import GoogleAuth
