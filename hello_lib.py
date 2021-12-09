@@ -8,7 +8,8 @@ def now():
     time_str = now1.strftime('%H:%M:%S')
     return "%d %s %d %s"%(now1.day, month_name, thai_year, time_str) # 30 ตุลาคม 2560 20:45:30
     
-
+def fnc1():
+  print("hello")
 
 import pandas as pd
 import xlsxwriter
