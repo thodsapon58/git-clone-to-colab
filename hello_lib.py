@@ -91,3 +91,10 @@ def add_log(
     sheet1.update_acell("E{}".format(next_row), cell5)
     sheet1.update_acell("F{}".format(next_row), cell6)
 
+    
+    
+def querymain_cutheader(df, col_index, col_name, cut_name )
+    df         = df.rename(columns={df.columns[col_index] : col_name}      
+    cut_querymain_header = [cut_name]
+    df = df[   (~df[col_name].isin(cut_querymain_header)) ]  # ~ แปลวา not คือไม่เอารายการใน list นั่นมาแสดง
+    return df
