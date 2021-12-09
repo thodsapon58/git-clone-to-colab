@@ -95,5 +95,11 @@ def add_log(
     
 def df_cutheader_secondrow(df, col_index, col_name, cut_name ):
     df         = df.rename(columns={df.columns[col_index] : col_name})      
-    df         = df[  (~df[col_name].isin(cut_name))   ]
+    cut_name_list = [cut_name]
+    df         = df[  (~df[col_name].isin(cut_name_list))   ]
+    return df
+
+
+def convert_field_type_int(df, col_name):
+    df[col_name] = df[col_name].astype(int)
     return df
