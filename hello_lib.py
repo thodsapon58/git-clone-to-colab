@@ -8,7 +8,23 @@ def now():
     time_str = now1.strftime('%H:%M:%S')
     return "%d %s %d %s"%(now1.day, month_name, thai_year, time_str) # 30 ตุลาคม 2560 20:45:30
   
-    
+   
+
+def import_gg_csv(file_id, file_name):
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+    downloaded = drive.CreateFile({'id': file_id})
+    downloaded.GetContentFile(file_name)
+    data_checkendyear_detail_before = pd.read_csv(file_name ,  sep='\^'       )
+    return data_checkendyear_detail_before
+
   
 
 #พ่นออกมาที่ชีทนี้
