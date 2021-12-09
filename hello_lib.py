@@ -10,9 +10,9 @@ def now():
     
 
      
-!ls drive
-!pip install pydrive
-!pip install xlsxwriter
+
+pip install pydrive
+pip install xlsxwriter
 import pandas as pd
 import xlsxwriter
 from pydrive.auth import GoogleAuth
