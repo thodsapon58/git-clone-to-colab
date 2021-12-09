@@ -1,6 +1,7 @@
 import datetime, pytz
 tz = pytz.timezone('Asia/Bangkok')
 
+import pandas as pd
 def now():
     now1 = datetime.datetime.now(tz)
     month_name = 'x มกราคม กุมภาพันธ์ มีนาคม เมษายน พฤษภาคม มิถุนายน กรกฎาคม สิงหาคม กันยายน ตุลาคม พฤศจิกายน ธันวาคม'.split()[now1.month]
