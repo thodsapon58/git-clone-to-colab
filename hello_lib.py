@@ -136,6 +136,7 @@ def mapping_base_info_from_main(df_m, df, col_name):
     df['effdt_en'] = df[col_name].map(df_m.set_index(col_name)['effdt_en'])
     df['effdt_en_yyyymm'] = df[col_name].map(df_m.set_index(col_name)['effdt_en_yyyymm'])
     df['merge_hiredate_en'] = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en'])
+    df['merge_hiredate_en_yyyymm'] = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en_yyyymm'])
     
     
     
