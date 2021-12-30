@@ -45,7 +45,22 @@ def import_gg_csv(file_id, file_name):
     df_new = df_new.fillna("")
     return df_new
 
-  
+def import_gg_csv_comma(file_id, file_name):
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+    downloaded = drive.CreateFile({'id': file_id})
+    downloaded.GetContentFile(file_name)
+    df_new = pd.read_csv(file_name ,  sep=','       )
+    df_new = df_new.fillna("")
+    return df_new
+
 
 #พ่นออกมาที่ชีทนี้
 #https://docs.google.com/spreadsheets/d/1EaVFbZrNsiE9fT_DXrCoSN9PNZmzXte5WgB0SVT72PI/edit#gid=1020847031
