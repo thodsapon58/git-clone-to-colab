@@ -133,6 +133,10 @@ def mapping_base_info_from_main(df_m, df, col_name):
     df['empl_class'] = df[col_name].map(df_m.set_index(col_name)['empl_class'])
     df['descr_c'] = df[col_name].map(df_m.set_index(col_name)['descr_c'])
     df['descr_m'] = df[col_name].map(df_m.set_index(col_name)['descr_m'])
-    df['effdt_en'] = df[col_name].map(df_m.set_index(col_name)['descr_c'])
-    df['merge_hiredate_en'] = df[col_name].map(df_m.set_index(col_name)['descr_m'])
+    df['effdt_en'] = df[col_name].map(df_m.set_index(col_name)['effdt_en'])
+    df['effdt_en_yyyymm'] = df[col_name].map(df_m.set_index(col_name)['effdt_en_yyyymm'])
+    df['merge_hiredate_en'] = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en'])
+    
+    
+    
     return df
