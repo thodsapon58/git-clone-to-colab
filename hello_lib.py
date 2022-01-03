@@ -146,9 +146,9 @@ def mapping_base_info_from_main(df_m, df, col_name):
 
 def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list):
 
-    !ls drive
-    !pip install pydrive
-    !pip install xlsxwriter
+#     !ls drive
+#     !pip install pydrive
+#     !pip install xlsxwriter
     import pandas as pd
 
     #add column
