@@ -141,3 +141,40 @@ def mapping_base_info_from_main(df_m, df, col_name):
     
     
     return df
+
+
+
+def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list):
+
+    !ls drive
+    !pip install pydrive
+    !pip install xlsxwriter
+    import pandas as pd
+
+    #add column
+    if (len(column_list)>0):
+        df = df[column_list]
+        
+
+    # these classes allow you to request the Google drive API
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+    import gspread
+    from gspread_dataframe import set_with_dataframe
+    from gspread_dataframe import get_as_dataframe
+    gc = gspread.authorize(GoogleCredentials.get_application_default())
+
+    #wb2 = gc.open_by_url('https://docs.google.com/spreadsheets/d/{}/edit#gid=0'.format(val_4_2))
+    wb2 = gc.open_by_url(googlesheet_url)
+
+    sheet_destination_sheet = wb2.worksheet(sheet_name)
+    wb2.values_clear("'{}'!{}".format(sheet_name,'A10:AP24000'))
+    set_with_dataframe(sheet_destination_sheet, df, row=10, include_column_header=True) 
