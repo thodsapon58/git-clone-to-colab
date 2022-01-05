@@ -144,7 +144,7 @@ def mapping_base_info_from_main(df_m, df, col_name):
 
 
 
-def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list):
+def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, sheet_range):
 
 #     !ls drive
 #     !pip install pydrive
@@ -176,5 +176,5 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list):
     wb2 = gc.open_by_url(googlesheet_url)
 
     sheet_destination_sheet = wb2.worksheet(sheet_name)
-    wb2.values_clear("'{}'!{}".format(sheet_name,'A10:AP24000'))
+    wb2.values_clear("'{}'!{}".format(sheet_name,sheet_range))
     set_with_dataframe(sheet_destination_sheet, df, row=10, include_column_header=True) 
