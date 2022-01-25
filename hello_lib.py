@@ -137,10 +137,41 @@ def mapping_base_info_from_main(df_m, df, col_name):
     df['effdt_en_yyyymm'] = df[col_name].map(df_m.set_index(col_name)['effdt_en_yyyymm'])
     df['merge_hiredate_en'] = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en'])
     df['merge_hiredate_en_yyyymm'] = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en_yyyymm'])
-    
-    
-    
     return df
+
+
+
+def mapping_ey_from_main(df_m, df, col_name, today_date):
+    
+    df_m['พนักงานเข้าใหม่ยังไม่ถึงปี'] = ''
+    df_m.loc[(df_m['empl_status'].isin(['A'])  ) &
+             (pd.to_datetime(df_m['today_date'], format='%d/%m/%Y') - pd.to_datetime(df_m['hire_date_en'], format='%d/%m/%Y')  < '365 days' ), 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = 'พนักงานเข้าใหม่ยังไม่ถึงปี'
+    df_m.loc[(df_m['action'] == 'REH') , 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = ''
+    
+    df['rc_code']                         = df[col_name].map(df_m.set_index(col_name)['rc_code'] )
+    df['descr_rc_code']                   = df[col_name].map(df_m.set_index(col_name)['descr_rc_code'] )
+    df['descr_c']                         = df[col_name].map(df_m.set_index(col_name)['descr_c'] )
+    df['1. กำกับสายงาน']                   = df[col_name].map(df_m.set_index(col_name)['1. กำกับสายงาน'] )
+    df['2. สาย']                          = df[col_name].map(df_m.set_index(col_name)['2. สาย'] )
+    df['3. กลุ่ม']                          = df[col_name].map(df_m.set_index(col_name)['3. กลุ่ม'] )
+    df['merge_hiredate_en']               = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en'] )
+    df['age']                             = df[col_name].map(df_m.set_index(col_name)['age'] )
+    df['sex']                             = df[col_name].map(df_m.set_index(col_name)['sex'] )
+    df['sys_retireyear']                  = df[col_name].map(df_m.set_index(col_name)['sys_retireyear'] )
+    df['empl_class']                      = df[col_name].map(df_m.set_index(col_name)['empl_class'] )
+    df['effdt']                           = df[col_name].map(df_m.set_index(col_name)['effdt'] )
+    df['action']                          = df[col_name].map(df_m.set_index(col_name)['action'] )
+    df['action_reason']                   = df[col_name].map(df_m.set_index(col_name)['action_reason'] )
+    df['action_reason_descr']             = df[col_name].map(df_m.set_index(col_name)['action_reason_descr'] )
+    df['พนักงานเข้าใหม่ยังไม่ถึงปี']             = df[col_name].map(df_m.set_index(col_name)['พนักงานเข้าใหม่ยังไม่ถึงปี'] )
+    return df
+
+
+
+
+
+
+
 
 
 
