@@ -153,7 +153,7 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
 
 
     df_m['วันสิ้นสภาพ'] = ''
-    df_m.loc[(df_m['empl_status'].isin(['T','D'])  ), 'วันสิ้นสภาพ']  = df_m['effdt']
+    df_m.loc[(df_m['empl_status'].isin(['T','D'])  ), 'วันสิ้นสภาพ']  = df_m['effdt_en']
     
     df['rc_code']                         = df[col_name].map(df_m.set_index(col_name)['rc_code'] )
     df['descr_rc_code']                   = df[col_name].map(df_m.set_index(col_name)['descr_rc_code'] )
