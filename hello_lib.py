@@ -155,6 +155,9 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
 #     df_m['วันสิ้นสภาพ'] = ''
     df_m.loc[(df_m['empl_status'].isin(['T','D'])  ), 'วันสิ้นสภาพ']  = df_m['effdt_en']
     
+    
+    
+    
     df['rc_code']                         = df[col_name].map(df_m.set_index(col_name)['rc_code'] )
     df['descr_rc_code']                   = df[col_name].map(df_m.set_index(col_name)['descr_rc_code'] )
     df['descr_c']                         = df[col_name].map(df_m.set_index(col_name)['descr_c'] )
@@ -171,7 +174,9 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
     df['action_reason']                   = df[col_name].map(df_m.set_index(col_name)['action_reason'] )
     df['action_reason_descr']             = df[col_name].map(df_m.set_index(col_name)['action_reason_descr'] )
     df['พนักงานเข้าใหม่ยังไม่ถึงปี']             = df[col_name].map(df_m.set_index(col_name)['พนักงานเข้าใหม่ยังไม่ถึงปี'] )
-    df['วันสิ้นสภาพ']                         = df[col_name].map(df_m.set_index(col_name)['วันสิ้นสภาพ'] )
+    df['วันสิ้นสภาพ']                        = df[col_name].map(df_m.set_index(col_name)['วันสิ้นสภาพ'] )
+    df['เรียงลำดับสายงาน']                   = df[col_name].map(df_m.set_index(col_name)['เรียงลำดับสายงาน'] )
+    
     
 
 
