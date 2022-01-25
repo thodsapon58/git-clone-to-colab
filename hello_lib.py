@@ -145,11 +145,11 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
     
     df_m['today_date'] = today_date
 
-    df_m['พนักงานเข้าใหม่ยังไม่ถึงปี'] =  (pd.to_datetime(df_m['today_date'], format='%d/%m/%Y') - pd.to_datetime(df_m['hire_date_en'], format='%d/%m/%Y')  < '365 days' )
-#     df_m.loc[(df_m['empl_status'].isin(['A'])  ) &
-#                  (pd.to_datetime(df_m['today_date'], format='%d/%m/%Y') - pd.to_datetime(df_m['hire_date_en'], format='%d/%m/%Y')  < '365 days' ), 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = 'พนักงานเข้าใหม่ยังไม่ถึงปี'
+    df_m['พนักงานเข้าใหม่ยังไม่ถึงปี'] = ''
+    df_m.loc[(df_m['empl_status'].isin(['A'])  ) &
+                 (pd.to_datetime(df_m['today_date'], format='%d/%m/%Y') - pd.to_datetime(df_m['hire_date_en'], format='%d/%m/%Y')  < '365 days' ), 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = 'พนักงานเข้าใหม่ยังไม่ถึงปี'
 
-    #     df_m.loc[(df_m['action'] == 'REH') , 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = ''
+    df_m.loc[(df_m['action'] == 'REH') , 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = ''
 
 
     
