@@ -259,3 +259,12 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
     fnc_senddata_to_googlesheet(df_new, id_googlesheet, my_sheet  , column_BP, my_clean_range) 
     
     
+def run_e_status(df,e):
+    df[e] = 0
+    df.loc[(df[e] == 'A' ),e]=1
+    df.loc[(df[e] == 'L' ),e]=2
+    df.loc[(df[e] == 'S' ),e]=3
+    df.loc[(df[e] == 'T' ),e]=4
+    df.loc[(df[e] == 'D' ),e]=5
+    
+    
