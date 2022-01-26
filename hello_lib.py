@@ -176,6 +176,7 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
     df['พนักงานเข้าใหม่ยังไม่ถึงปี']             = df[col_name].map(df_m.set_index(col_name)['พนักงานเข้าใหม่ยังไม่ถึงปี'] )
     df['วันสิ้นสภาพ']                        = df[col_name].map(df_m.set_index(col_name)['วันสิ้นสภาพ'] )
     df['เรียงลำดับสายงาน']                   = df[col_name].map(df_m.set_index(col_name)['เรียงลำดับสายงาน'] )
+    df['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] = df[col_name].map(df_m.set_index(col_name)['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] )
     
     
 
