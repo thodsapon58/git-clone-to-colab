@@ -240,11 +240,18 @@ def grouptake1_12month(data_ey, key_mapping, key_type, key_type_value,key_sum, k
     for x1 in listofmonth_int:
         newlist.append(x1)
         field_rename = key_type_value + ": รวมวันลาใช้ไป ณ เดือน " + str(count)
-        print(newlist)
-        print(field_rename)
+#         print(newlist)
+#         print(field_rename)
 
 
         data_ey2SUM_group           = data_ey[  (data_ey[key_type]).isin([key_type_value]) & (data_ey[key_m]).isin(newlist)  ].groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
         data_ey[field_rename]       = data_ey[key_mapping].map(data_ey2SUM_group.set_index(key_mapping)[field_rename])
         data_ey.loc[(      data_ey[field_rename].isnull() ), field_rename]  = 0.0
         count                       = count +1
+
+def assign_field_to_float(df, f):
+    df[f] = df[f].fillna('0.0')
+    df.loc[(df[f] == '' ),f]='0.0'
+    df[f] = df[f].astype(float)
+
+        
