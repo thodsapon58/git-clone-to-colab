@@ -254,7 +254,7 @@ def assign_field_to_float(df, f):
     df.loc[(df[f] == '' ),f]='0.0'
     df[f] = df[f].astype(float)
     
-def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range ):
+def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, column_BP ):
     df_new = df[   df['หน่วยงานที่ดูแล'].isin([f1_value])  & df[f2].isin(['A'])  &  df[f3].isin([f3_value])          ]
     fnc_senddata_to_googlesheet(df_new, id_googlesheet_BP1, my_sheet  , column_BP, my_clean_range) 
     
