@@ -179,6 +179,8 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
     df['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] = df[col_name].map(df_m.set_index(col_name)['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] )
     
     
+    a = ['CON',  'RLS',  'WHI']
+    df = df[~df.action_reason.isin(a)]
 
 
     return df
