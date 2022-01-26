@@ -226,3 +226,23 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     sheet_destination_sheet = wb2.worksheet(sheet_name)
     wb2.values_clear("'{}'!{}".format(sheet_name,sheet_range))
     set_with_dataframe(sheet_destination_sheet, df, row=10, include_column_header=True) 
+    
+    
+    
+def grouptake1_12month(data_ey, key_mapping, key_type, key_type_value,key_sum, key_m):
+    listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
+    newlist = []
+    count = 1
+    # for x in range(1, 10):
+    #     field_rename = 'สิทธิลาพักผ่อนประจำปี : รวมวันลาใช้ไป ณ เดือน ' + str(x)
+    for x1 in listofmonth_int:
+        newlist.append(x1)
+        field_rename = key_type_value + ": รวมวันลาใช้ไป ณ เดือน " + str(count)
+        print(newlist)
+        print(field_rename)
+
+
+        data_ey2SUM_group           = data_ey[  (data_ey[key_type]).isin([key_type_value]) & (data_ey[key_m]).isin(newlist)  ].groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
+        data_ey[field_rename]       = data_ey[key_mapping].map(data_ey2SUM_group.set_index(key_mapping)[field_rename])
+        data_ey.loc[(      data_ey[field_rename].isnull() ), field_rename]  = 0.0
+        count                       = count +1
