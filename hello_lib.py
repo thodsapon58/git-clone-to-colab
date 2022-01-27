@@ -342,7 +342,7 @@ def leave_convert_ceiling05(df, field1, field2, field3 ):
     for x in listofmonth_int:
         field_name_avg = field1 + str(x) + ')'
         field_name = field2 + str(int(x))
-        data_ey5_sumcol1[field_name_avg] = np.ceil((data_ey5_sumcol1[field_name] / data_ey5_sumcol1[field3])  *2)/2
+        df[field_name_avg] = np.ceil((df[field_name] / df[field3])  *2)/2
 
     return df
     
