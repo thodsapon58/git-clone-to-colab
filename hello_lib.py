@@ -253,7 +253,8 @@ def assign_field_to_float(df, f):
     df[f] = df[f].fillna('0.0')
     df.loc[(df[f] == '' ),f]='0.0'
     df[f] = df[f].astype(float)
-    
+    return df
+
 def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, column_BP ):
     df_new = df[   df['หน่วยงานที่ดูแล'].isin([f1_value])  & df[f2].isin(['A'])  &  df[f3].isin([f3_value])          ]
     fnc_senddata_to_googlesheet(df_new, id_googlesheet, my_sheet  , column_BP, my_clean_range) 
@@ -266,7 +267,7 @@ def run_e_status(df,e):
     df.loc[(df[e] == 'S' ),e]=3
     df.loc[(df[e] == 'T' ),e]=4
     df.loc[(df[e] == 'D' ),e]=5
-    
+    return df
     
     
 def fnc_find_this_year_match_function(today_date_month):
@@ -332,4 +333,15 @@ def fnc_find_this_year_match_function_before_month(today_date_month):
      
     return my_column_name
     
+    
+    
+
+def leave_convert_ceiling05(df, field1, field2, field3 ):
+    listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
+    for x in listofmonth_int:
+        field_name_avg = field1 + str(x) + ')'
+        field_name = field2 + str(int(x))
+        data_ey5_sumcol1[field_name_avg] = np.ceil((data_ey5_sumcol1[field_name] / data_ey5_sumcol1[field3])  *2)/2
+
+    return df
     
