@@ -271,65 +271,65 @@ def run_e_status(df,e):
     return df
     
     
-def fnc_find_this_year_match_function(today_date_month):
+def fnc_find_this_year_match_function(today_date_month, my_text):
     my_column_name = ''
     if(today_date_month =='01'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 1'
+        my_column_name = my_text + '1'
     elif(today_date_month =='02'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 2'
+        my_column_name = my_text + '2'
     elif(today_date_month =='03'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 3'
+        my_column_name = my_text + '3'
     elif(today_date_month =='04'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 4'
+        my_column_name = my_text + '4'
     elif(today_date_month =='05'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 5'
+        my_column_name = my_text + '5'
     elif(today_date_month =='06'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 6'
+        my_column_name = my_text + '6'
     elif(today_date_month =='07'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 7'
+        my_column_name = my_text + '7'
     elif(today_date_month =='08'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 8'
+        my_column_name = my_text + '8'
     elif(today_date_month =='09'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 9'
+        my_column_name = my_text + '9'
     elif(today_date_month =='10'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 10'
+        my_column_name = my_text + '10'
     elif(today_date_month =='11'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 11'
+        my_column_name = my_text + '11'
     elif(today_date_month =='12'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 12'
+        my_column_name = my_text + '12'
 
      
     return my_column_name
     
     
     
-def fnc_find_this_year_match_function_before_month(today_date_month):
+def fnc_find_this_year_match_function_before_month(today_date_month, my_text):
 
     my_column_name = ''
     if(today_date_month =='01'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 1'
+        my_column_name = my_text + '1'
     elif(today_date_month =='02'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 1'
+        my_column_name = my_text + '1'
     elif(today_date_month =='03'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 2'
+        my_column_name = my_text + '2'
     elif(today_date_month =='04'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 3'
+        my_column_name = my_text + '3'
     elif(today_date_month =='05'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 4'
+        my_column_name = my_text + '4'
     elif(today_date_month =='06'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 5'
+        my_column_name = my_text + '5'
     elif(today_date_month =='07'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 6'
+        my_column_name = my_text + '6'
     elif(today_date_month =='08'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 7'
+        my_column_name = my_text + '7'
     elif(today_date_month =='09'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 8'
+        my_column_name = my_text + '8'
     elif(today_date_month =='10'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 9'
+        my_column_name = my_text + '9'
     elif(today_date_month =='11'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 10'
+        my_column_name = my_text + '10'
     elif(today_date_month =='12'):
-        my_column_name = 'สิทธิลาพักผ่อนประจำปี: รวมวันลาใช้ไป ณ เดือน 11'
+        my_column_name = my_text + '11'
 
      
     return my_column_name
