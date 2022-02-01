@@ -230,9 +230,9 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     
     try:
             sheet1 = wb2.worksheet(sheet_name)
-            wb2.del_worksheet(sheet1)
+#             wb2.del_worksheet(sheet1)
 
-            worksheet1 = wb2.add_worksheet(title=sheet_name, rows="100", cols="20")
+#             worksheet1 = wb2.add_worksheet(title=sheet_name, rows="100", cols="20")
     except:
             worksheet1 = wb2.add_worksheet(title=sheet_name, rows="100", cols="20")
     
