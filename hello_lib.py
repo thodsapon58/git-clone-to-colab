@@ -275,7 +275,7 @@ def assign_field_to_float(df, f):
 
 def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, column_BP ):
     df_new = df[   df['หน่วยงานที่ดูแล'].isin([f1_value])  & df[f2].isin(['A'])  &  df[f3].isin([f3_value])          ]
-    df_new = df_new.drop(['['หน่วยงานที่ดูแล'].'],axis =1)
+    df_new = df_new.drop(['หน่วยงานที่ดูแล'],axis =1)
     
     df_new = df_new.rename(columns={  '3. กลุ่ม' : 'กลุ่ม',
                                         'rc_code' : 'รหัสสังกัด',
