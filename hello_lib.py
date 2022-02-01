@@ -226,9 +226,26 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     #wb2 = gc.open_by_url('https://docs.google.com/spreadsheets/d/{}/edit#gid=0'.format(val_4_2))
     wb2 = gc.open_by_url(googlesheet_url)
 
+    
+    
+    try:
+            sheet1 = wb2.worksheet(sheet_name)
+            wb2.del_worksheet(sheet1)
+
+            worksheet1 = wb2.add_worksheet(title=sheet_name, rows="100", cols="20")
+    except:
+            worksheet1 = wb2.add_worksheet(title=sheet_name, rows="100", cols="20")
+    
+    
+    #worksheet1 เสมือน sheet_destination_sheet
     sheet_destination_sheet = wb2.worksheet(sheet_name)
     wb2.values_clear("'{}'!{}".format(sheet_name,sheet_range))
     set_with_dataframe(sheet_destination_sheet, df, row=10, include_column_header=True) 
+    
+    
+    
+    
+    
     
     
     
@@ -259,6 +276,8 @@ def assign_field_to_float(df, f):
 def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, column_BP ):
     df_new = df[   df['หน่วยงานที่ดูแล'].isin([f1_value])  & df[f2].isin(['A'])  &  df[f3].isin([f3_value])          ]
     fnc_senddata_to_googlesheet(df_new, id_googlesheet, my_sheet  , column_BP, my_clean_range) 
+    
+    
     
     
 def run_e_status(df,e):
