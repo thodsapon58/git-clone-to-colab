@@ -335,18 +335,23 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
                                 'รหัสสังกัด',
                                 'สังกัด',
                                 'กลุ่มที่ต้อง adjust วันลา',
-                                field11,
-                                field12,
-                                field13,
-             
-                                field21,
-                                field22,
-                                field23,
+
 
                                 field31,
                                 field32,
                                 field33,
 
+        
+                                field21,
+                                field22,
+                                field23,
+
+                                field11,
+                                field12,
+                                field13,
+             
+        
+        
 #                                 'หน่วยงานที่ดูแล'
                               ]
     df_new = df_new.drop(['หน่วยงานที่ดูแล'],axis =1)
