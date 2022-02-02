@@ -295,8 +295,8 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
     
     
     field11 = '1.1 สิทธิลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
-    field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
-    field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
+    field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before
+    field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before
     
     field21 = '2.1 สิทธิลาพักผ่อนประจำปี ' + this_year_str
     field22 = '2.2 ยอดใช้ไปลาพักผ่อนประจำปี ' + this_year_str
