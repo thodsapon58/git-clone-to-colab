@@ -347,7 +347,7 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
                                 field31,
                                 field32,
                                 field33,
-                                'หน่วยงานที่ดูแล'
+#                                 'หน่วยงานที่ดูแล'
                               ]
     df_new = df_new.drop(['หน่วยงานที่ดูแล'],axis =1)
     fnc_senddata_to_googlesheet(df_new, id_googlesheet, my_sheet  , column_BP, my_clean_range) 
