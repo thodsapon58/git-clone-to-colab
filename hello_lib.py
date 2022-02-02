@@ -444,4 +444,26 @@ def leave_convert_ceiling05(df, field1, field2, field3 ):
         df[field_name_avg] = np.ceil((df[field_name] / df[field3])  *2)/2
 
     return df
+
+
+
+def rename_googlesheet(id1, rename_file):
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+
+    file1 = drive.CreateFile({'id': id1})
+    file1.Upload()                 # Upload new title.
+    a=drive.auth.service.files().get(fileId=id1).execute()
+    a['title']=rename_file
+    update=drive.auth.service.files().update(fileId=id1,body=a).execute()
+
+
+
     
