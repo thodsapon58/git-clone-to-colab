@@ -330,7 +330,7 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
     column_BP = [                
                                 'emplid',
                                 'name',
-                                # '2. สาย',
+                                'ตำแหน่ง',
                                 'กลุ่ม',
                                 'รหัสสังกัด',
                                 'สังกัด',
