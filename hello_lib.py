@@ -285,10 +285,10 @@ def parameter_this_year(this_year):
     return this_year
 
 
-def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range ):
+def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, this_year ):
     
     
-    this_year = parameter_this_year()
+
     this_year_str = str(this_year)
     this_year_before = str(this_year-1)
     
