@@ -326,7 +326,7 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
                                     
     })
 
-    df_new[field34] = (df_new[field32] / df_new[field32]) * 100
+    df_new[field34] = (df_new[field32] / df_new[field32])
     
     df_new.sort_values([field34], ascending=[False],  na_position ='first', inplace=True)
     column_BP = [                
