@@ -194,6 +194,49 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
 
 
 
+def mapping_ey_from_main_EY(df_m, df, col_name, today_date):
+    
+    df_m['today_date'] = today_date
+
+    df_m['พนักงานเข้าใหม่ยังไม่ถึงปี'] = ''
+    df_m.loc[(df_m['empl_status'].isin(['A'])  ) &
+                 (pd.to_datetime(df_m['today_date'], format='%d/%m/%Y') - pd.to_datetime(df_m['hire_date_en'], format='%d/%m/%Y')  < '365 days' ), 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = 'พนักงานเข้าใหม่ยังไม่ถึงปี'
+
+    df_m.loc[(df_m['action'] == 'REH') , 'พนักงานเข้าใหม่ยังไม่ถึงปี']  = ''
+
+
+#     df_m['วันสิ้นสภาพ'] = ''
+    df_m.loc[(df_m['empl_status'].isin(['T','D'])  ), 'วันสิ้นสภาพ']  = df_m['effdt_en']
+    
+    
+    
+    
+    df['รหัสสังกัด']                         = df[col_name].map(df_m.set_index(col_name)['rc_code'] )
+    df['สังกัด']                   = df[col_name].map(df_m.set_index(col_name)['descr_rc_code'] )
+    df['descr_c']                         = df[col_name].map(df_m.set_index(col_name)['descr_c'] )
+    df['กำกับสายงาน']                   = df[col_name].map(df_m.set_index(col_name)['1. กำกับสายงาน'] )
+    df['สาย']                          = df[col_name].map(df_m.set_index(col_name)['2. สาย'] )
+    df['กลุ่ม']                          = df[col_name].map(df_m.set_index(col_name)['3. กลุ่ม'] )
+    df['merge_hiredate_en']               = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en'] )
+    df['age']                             = df[col_name].map(df_m.set_index(col_name)['age'] )
+    df['sex']                             = df[col_name].map(df_m.set_index(col_name)['sex'] )
+    df['sys_retireyear']                  = df[col_name].map(df_m.set_index(col_name)['sys_retireyear'] )
+    df['empl_class']                      = df[col_name].map(df_m.set_index(col_name)['empl_class'] )
+    df['effdt']                           = df[col_name].map(df_m.set_index(col_name)['effdt'] )
+    df['action']                          = df[col_name].map(df_m.set_index(col_name)['action'] )
+    df['action_reason']                   = df[col_name].map(df_m.set_index(col_name)['action_reason'] )
+    df['action_reason_descr']             = df[col_name].map(df_m.set_index(col_name)['action_reason_descr'] )
+    df['พนักงานเข้าใหม่ยังไม่ถึงปี']             = df[col_name].map(df_m.set_index(col_name)['พนักงานเข้าใหม่ยังไม่ถึงปี'] )
+    df['วันสิ้นสภาพ']                        = df[col_name].map(df_m.set_index(col_name)['วันสิ้นสภาพ'] )
+    df['เรียงลำดับสายงาน']                   = df[col_name].map(df_m.set_index(col_name)['เรียงลำดับสายงาน'] )
+    df['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] = df[col_name].map(df_m.set_index(col_name)['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] )
+    
+    
+    a = ['CON',  'RLS',  'WHI']
+    df = df[~df.action_reason.isin(a)]
+
+
+    return df
 
 
 
