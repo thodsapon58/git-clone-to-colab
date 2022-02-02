@@ -308,7 +308,8 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
     field32 = '3.2 ยอดใช้ไป> ลาพักผ่อนสะสม'
     field33 = '3.3 คงเหลือ> ลาพักผ่อนสะสม'
     
-    
+
+        
     df_new = df_new.rename(columns={    '3. กลุ่ม' : 'กลุ่ม',
                                         'rc_code' : 'รหัสสังกัด',
                                         'descr_rc_code' : 'สังกัด',
@@ -326,7 +327,7 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
                                         '3.3 คงเหลือ - สิทธิการลาพักผ่อนสะสมใช้ได้ 3 ปี' : field33,     
                                     
     })
-    
+    df_new.sort_values(['field32'], ascending=[False],  na_position ='first', inplace=True)
     column_BP = [                
                                 'emplid',
                                 'name',
