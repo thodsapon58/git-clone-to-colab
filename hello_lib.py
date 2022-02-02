@@ -325,8 +325,9 @@ def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_s
                                         '3.3 คงเหลือ - สิทธิการลาพักผ่อนสะสมใช้ได้ 3 ปี' : field33,     
                                     
     })
-    df_new[field34] = 0
-    df_new[field34] = (df_new[field32] / df_new[field32])
+    df_new[field34] = df_new[field34].astype(float)
+    df_new[field34] = 0.0
+    df_new[field34] = (df_new[field32] / df_new[field31])
     
     df_new.sort_values([field34], ascending=[False],  na_position ='first', inplace=True)
     column_BP = [                
