@@ -278,14 +278,76 @@ def assign_field_to_float(df, f):
     df[f] = df[f].astype(float)
     return df
 
-def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, column_BP ):
+
+
+def parameter_this_year(this_year):
+
+    return this_year
+
+
+def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range ):
+    
+    
+    this_year = parameter_this_year()
+    this_year_str = str(this_year)
+    this_year_before = str(this_year-1)
+    
     df_new = df[   df['หน่วยงานที่ดูแล'].isin([f1_value])  & df[f2].isin(['A'])  &  df[f3].isin([f3_value])          ]
 #     df_new = df_new.drop(['หน่วยงานที่ดูแล'],axis =1)
     
-    df_new = df_new.rename(columns={  '3. กลุ่ม' : 'กลุ่ม',
+    
+    field11 = '1.1 สิทธิลาพักผ่อนประจำปี ' + this_year_before + ' ยกมาใช้ได้ภายใน 31 มีค '+ this_year_str
+    field12 = '1.2 ยอดใช้ไป - สิทธิลาพักผ่อนประจำปี ' + this_year_before + ' ยกมาใช้ได้ภายใน 31 มีค '+ this_year_str
+    field13 = '1.3 คงเหลือ - สิทธิลาพักผ่อนประจำปี ' + this_year_before + ' ยกมาใช้ได้ภายใน 31 มีค '+ this_year_str
+    
+    field21 = '2.1 สิทธิลาพักผ่อนประจำปี ' + this_year_str
+    field22 = '2.2 ยอดใช้ไป - สิทธิลาพักผ่อนปี ' + this_year_str
+    field23 = '2.3 คงเหลือ - สิทธิลาพักผ่อนปี ' + this_year_str
+    
+    field31 = '3.1 สิทธิลาพักผ่อนสะสม'
+    field32 = '3.2 ยอดใช้ไป - สิทธิลาพักผ่อนสะสม'
+    field33 = '3.3 คงเหลือ - สิทธิลาพักผ่อนสะสม'
+    
+    
+    df_new = df_new.rename(columns={    '3. กลุ่ม' : 'กลุ่ม',
                                         'rc_code' : 'รหัสสังกัด',
                                         'descr_rc_code' : 'สังกัด',
+                                        '1.1 สิทธิการลาพักผ่อนประจำปียกมาจากปีที่แล้ว' : field11,
+                                        '1.2 ยอดใช้ไป - สิทธิการลาพักผ่อนประจำปียกมาจากปีที่แล้ว' : field12,                          
+                                        '1.3 คงเหลือ - สิทธิการลาพักผ่อนประจำปียกมาจากปีที่แล้ว' : field13, 
+                                    
+                                    
+                                        '2.1 สิทธิการลาพักผ่อนประจำปีปัจจุบัน' : field21,
+                                        '2.2 ยอดใช้ไป - สิทธิการลาพักผ่อนประจำปีปัจจุบัน' : field22,                          
+                                        '2.3 คงเหลือ - สิทธิการลาพักผ่อนประจำปีปัจจุบัน' : field23,     
+                                    
+                                        '3.1 สิทธิการลาพักผ่อนสะสมใช้ได้ 3 ปี' : field31,
+                                        '3.2 ยอดใช้ไป - สิทธิการลาพักผ่อนสะสมใช้ได้ 3 ปี' : field32,                          
+                                        '3.3 คงเหลือ - สิทธิการลาพักผ่อนสะสมใช้ได้ 3 ปี' : field33,     
+                                    
     })
+    
+    column_BP = [                
+                                'emplid',
+                                'name',
+                                # '2. สาย',
+                                'กลุ่ม',
+                                'รหัสสังกัด',
+                                'สังกัด',
+                                'กลุ่มที่ต้อง adjust วันลา',
+                                field11,
+                                field12,
+                                field13,
+             
+                                field21,
+                                field22,
+                                field23,
+
+                                field31,
+                                field32,
+                                field33,
+                                'หน่วยงานที่ดูแล'
+                              ]
     
     fnc_senddata_to_googlesheet(df_new, id_googlesheet, my_sheet  , column_BP, my_clean_range) 
     
