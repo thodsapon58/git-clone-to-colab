@@ -467,3 +467,19 @@ def rename_googlesheet(id1, rename_file):
 
 
     
+def copy_fileid_to_specific_folder(id1, specific_folderid, rename_file):
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+    file1 = drive.CreateFile({'id': id1})
+    file1.Upload()                 # Upload new title.
+
+    drive.auth.service.files().copy(fileId=id1, body={"parents": [{"id": specific_folderid}], 'title': rename_file}).execute()
+    
+    
