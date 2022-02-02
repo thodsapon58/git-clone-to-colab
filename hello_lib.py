@@ -1,5 +1,5 @@
 
-!pip install openpyxl==3.0.9
+
 
 import datetime, pytz
 tz = pytz.timezone('Asia/Bangkok')
