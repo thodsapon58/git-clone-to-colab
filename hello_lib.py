@@ -1,6 +1,6 @@
 
 
-pip install openpyxl==3.0.9
+
 import datetime, pytz
 tz = pytz.timezone('Asia/Bangkok')
 
@@ -17,7 +17,7 @@ def now():
 
 def import_gg_xlsx(file_id, file_name):
     
-    
+    pip install openpyxl==3.0.9
     from pydrive.auth import GoogleAuth
     from pydrive.drive import GoogleDrive 
     from google.colab import auth 
