@@ -345,14 +345,21 @@ def grouptake1_12month(data_ey,   key_type_value):
     #     field_rename = 'สิทธิลาพักผ่อนประจำปี : รวมวันลาใช้ไป ณ เดือน ' + str(x)
     for x1 in listofmonth_int:
         newlist.append(x1)
-        field_rename = key_type_value + ": รวมวันลาใช้ไป ณ เดือน " + str(count)
+        
+        field_rename = key_type_value +  ' รวมถึง ณ  ' + x1 + ' หน่วย : วัน' 
+
+        
 #         print(newlist)
 #         print(field_rename)
 
-
+        #step1 group value with month
         data_ey2SUM_group           = data_ey[  (data_ey[key_type]).isin([key_type_value]) & (data_ey[key_m]).isin(newlist)  ] \
                                     .groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
+        
+        #step2 mapping data
         data_ey[field_rename]       = data_ey[key_mapping].map(data_ey2SUM_group.set_index(key_mapping)[field_rename])
+        
+        #step3 fillna, replace fill
         data_ey.loc[(      data_ey[field_rename].isnull() ), field_rename]  = 0.0
         count                       = count +1
         print(field_rename)
