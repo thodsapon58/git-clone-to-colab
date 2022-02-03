@@ -208,8 +208,8 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date):
 #     df_m['วันสิ้นสภาพ'] = ''
     df_m.loc[(df_m['empl_status'].isin(['T','D'])  ), 'วันสิ้นสภาพ']  = df_m['effdt_en']
     
-    
-    
+
+    df = df.drop(['สายงาน'],axis =1)
     
     df['รหัสสังกัด']                         = df[col_name].map(df_m.set_index(col_name)['rc_code'] )
     df['สังกัด']                   = df[col_name].map(df_m.set_index(col_name)['descr_rc_code'] )
@@ -229,14 +229,18 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date):
     df['พนักงานเข้าใหม่ยังไม่ถึงปี']             = df[col_name].map(df_m.set_index(col_name)['พนักงานเข้าใหม่ยังไม่ถึงปี'] )
     df['วันสิ้นสภาพ']                        = df[col_name].map(df_m.set_index(col_name)['วันสิ้นสภาพ'] )
     df['เรียงลำดับสายงาน']                   = df[col_name].map(df_m.set_index(col_name)['เรียงลำดับสายงาน'] )
-    df['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] = df[col_name].map(df_m.set_index(col_name)['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] )
+    df['หน่วยงานที่ดูแล'] = df[col_name].map(df_m.set_index(col_name)['สายงานภายใต้การรับผิดชอบของ BP ณ ปัจจุบัน (Fix Code กรณีมีการแก้ไขต้องปรับเปลี่ยนช่องด้วย)'] )
     
     
     a = ['CON',  'RLS',  'WHI']
     df = df[~df.action_reason.isin(a)]
 
 
-    return df
+    df = df.rename(columns={'empl_status' : 'สถานะ'}      )
+
+    df = df[(df[''สถานะ'}'].isin(['A','L','S']))]
+#     return df
+    
 
 
 
