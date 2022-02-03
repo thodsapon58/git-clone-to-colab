@@ -213,7 +213,7 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
     
     df['รหัสสังกัด']                         = df[col_name].map(df_m.set_index(col_name)['rc_code'] )
     df['สังกัด']                   = df[col_name].map(df_m.set_index(col_name)['descr_rc_code'] )
-    df['descr_c']                         = df[col_name].map(df_m.set_index(col_name)['descr_c'] )
+    df['corporate']                         = df[col_name].map(df_m.set_index(col_name)['descr_c'] )
     df['กำกับสายงาน']                   = df[col_name].map(df_m.set_index(col_name)['1. กำกับสายงาน'] )
     df['สาย']                          = df[col_name].map(df_m.set_index(col_name)['2. สาย'] )
     df['กลุ่ม']                          = df[col_name].map(df_m.set_index(col_name)['3. กลุ่ม'] )
@@ -332,8 +332,13 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     
     
     
-def grouptake1_12month(data_ey, key_mapping, key_type, key_type_value,key_sum, key_m):
+def grouptake1_12month(data_ey,   key_type_value):
     listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
+    key_mapping = 'emplid'
+    key_sum = 'DURATION_DAYS'
+    key_m = 'ABSENCE_DATE_only_month'
+    key_type = 'ประเภทการลาพักผ่อน 3 กลุ่ม'
+    
     newlist = []
     count = 1
     # for x in range(1, 10):
@@ -345,11 +350,16 @@ def grouptake1_12month(data_ey, key_mapping, key_type, key_type_value,key_sum, k
 #         print(field_rename)
 
 
-        data_ey2SUM_group           = data_ey[  (data_ey[key_type]).isin([key_type_value]) & (data_ey[key_m]).isin(newlist)  ].groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
+        data_ey2SUM_group           = data_ey[  (data_ey[key_type]).isin([key_type_value]) & (data_ey[key_m]).isin(newlist)  ] \
+                                    .groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
         data_ey[field_rename]       = data_ey[key_mapping].map(data_ey2SUM_group.set_index(key_mapping)[field_rename])
         data_ey.loc[(      data_ey[field_rename].isnull() ), field_rename]  = 0.0
         count                       = count +1
 
+        
+        
+        
+        
 def assign_field_to_float(df, f):
     df[f] = df[f].fillna('0.0')
     df.loc[(df[f] == '' ),f]='0.0'
