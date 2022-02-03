@@ -362,10 +362,10 @@ def grouptake1_12month(df,   key_type_value):
         df[key_mapping] = df[key_mapping].astype(int)
         df_group[key_mapping] = df_group[key_mapping].astype(int)
         df[field_rename]       = df[key_mapping].map(df_group.set_index(key_mapping)[field_rename])
-        print("----------------field_rename--------------")
-        print(df[field_rename])
+
         print("----------------df group field_rename--------------")
-        print(df_group[field_rename])
+        print(df_group.head())
+        
         #step3 fillna, replace fill
         df.loc[(      df[field_rename].isnull() ), field_rename]  = 0.0
         count                       = count +1
