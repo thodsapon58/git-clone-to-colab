@@ -236,35 +236,35 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
     df = df[~df.action_reason.isin(a)]
 
 
-    this_year_str = str(this_year)
-    this_year_before = str(this_year-1)
-    field11 = '1.1 สิทธิลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
-    field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before
-    field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before
+#     this_year_str = str(this_year)
+#     this_year_before = str(this_year-1)
+#     field11 = '1.1 สิทธิลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
+#     field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before
+#     field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before
     
-    field21 = '2.1 สิทธิลาพักผ่อนประจำปี ' + this_year_str
-    field22 = '2.2 ยอดใช้ไปลาพักผ่อนประจำปี ' + this_year_str
-    field23 = '2.3 คงเหลือลาพักผ่อนปี ' + this_year_str
+#     field21 = '2.1 สิทธิลาพักผ่อนประจำปี ' + this_year_str
+#     field22 = '2.2 ยอดใช้ไปลาพักผ่อนประจำปี ' + this_year_str
+#     field23 = '2.3 คงเหลือลาพักผ่อนปี ' + this_year_str
     
-    field31 = '3.1 สิทธิลาพักผ่อนสะสม'
-    field32 = '3.2 ยอดใช้ไปลาพักผ่อนสะสม'
-    field33 = '3.3 คงเหลือลาพักผ่อนสะสม'
+#     field31 = '3.1 สิทธิลาพักผ่อนสะสม'
+#     field32 = '3.2 ยอดใช้ไปลาพักผ่อนสะสม'
+#     field33 = '3.3 คงเหลือลาพักผ่อนสะสม'
     
     
 
     df = df.rename(columns={
                             'empl_status' : 'สถานะ',
-                            'empl_status' : field11,
-                            'empl_status' : field12,
-                            'empl_status' : field13,
+                            'ABSV_DYS_CARRYOVER' : field11,
+                            'KTB_ABS_TAKE_FW' : field12,
 
-                            'empl_status' : field21,
-                            'empl_status' : field22,
-                            'empl_status' : field23,
+
+                            'ABSV_DYS_EARN_YTD' : field21,
+                            'ABSV_DYS_TAKE_YTD' : field22,
+
         
-                            'empl_status' : field31,
-                            'empl_status' : field32,
-                            'empl_status' : field33,
+                            'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_CARRYOVER' : field31,
+                            'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_TAKE_YTD' : field32,
+
     })
 
     
