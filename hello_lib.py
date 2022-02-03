@@ -220,7 +220,7 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
     df['merge_hiredate_en']               = df[col_name].map(df_m.set_index(col_name)['merge_hiredate_en'] )
     df['age']                             = df[col_name].map(df_m.set_index(col_name)['age'] )
     df['sex']                             = df[col_name].map(df_m.set_index(col_name)['sex'] )
-    df['sys_retireyear']                  = df[col_name].map(df_m.set_index(col_name)['sys_retireyear'] )
+    df['ปีเกษียณ']                  = df[col_name].map(df_m.set_index(col_name)['sys_retireyear'] )
     df['empl_class']                      = df[col_name].map(df_m.set_index(col_name)['empl_class'] )
     df['effdt']                           = df[col_name].map(df_m.set_index(col_name)['effdt'] )
     df['action']                          = df[col_name].map(df_m.set_index(col_name)['action'] )
@@ -269,9 +269,10 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
 
     
     df = df[(df['สถานะ'].isin(['A','L','S']))]
+    df['ปีเกษียณ'] = df['ปีเกษียณ'] - 543
     return df
     
-
+    
 
 
 
