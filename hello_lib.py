@@ -339,6 +339,8 @@ def grouptake1_12month(data_ey,   key_type_value):
     key_m = 'ABSENCE_DATE_only_month'
     key_type = 'ประเภทการลาพักผ่อน 3 กลุ่ม'
     
+    key_type_value = key_type_value.replace('1.2 ','').replace('2.2 ','').replace('3.2 ','')
+    
     newlist = []
     count = 1
     # for x in range(1, 10):
@@ -346,7 +348,7 @@ def grouptake1_12month(data_ey,   key_type_value):
     for x1 in listofmonth_int:
         newlist.append(x1)
         
-        field_rename = key_type_value +  ' รวมสะสมถึงเดือน ' + x1 + ' (หน่วย : วัน)' 
+        field_rename = key_type_value +  ' รวมสะสมถึงเดือน ' + x1 + ' (หน่วย:วัน)' 
 
         
 #         print(newlist)
