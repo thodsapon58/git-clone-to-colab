@@ -355,6 +355,7 @@ def grouptake1_12month(data_ey,   key_type_value):
         data_ey[field_rename]       = data_ey[key_mapping].map(data_ey2SUM_group.set_index(key_mapping)[field_rename])
         data_ey.loc[(      data_ey[field_rename].isnull() ), field_rename]  = 0.0
         count                       = count +1
+        print(field_rename)
 
         
         
