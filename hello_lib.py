@@ -209,7 +209,7 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
     df_m.loc[(df_m['empl_status'].isin(['T','D'])  ), 'วันสิ้นสภาพ']  = df_m['effdt_en']
     
 
-    df = df.drop(['สายงาน'],axis =1)
+#     df = df.drop(['สายงาน'],axis =1)
     
     df['รหัสสังกัด']                         = df[col_name].map(df_m.set_index(col_name)['rc_code'] )
     df['สังกัด']                   = df[col_name].map(df_m.set_index(col_name)['descr_rc_code'] )
