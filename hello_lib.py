@@ -332,7 +332,7 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     
     
     
-def grouptake1_12month(data_ey,   key_type_value):
+def grouptake1_12month(df,   key_type_value):
     listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
     key_mapping = 'emplid'
     key_sum = 'DURATION_DAYS'
@@ -355,15 +355,15 @@ def grouptake1_12month(data_ey,   key_type_value):
 #         print(field_rename)
 
         #step1 group value with month
-        data_ey2SUM_group           = data_ey[  (data_ey[key_type]).isin([key_type_value]) & (data_ey[key_m]).isin(newlist)  ] \
+        df_group           = df[  (df[key_type]).isin([key_type_value]) & (df[key_m]).isin(newlist)  ] \
                                     .groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
         
         #step2 mapping data
-        data_ey[field_rename]       = data_ey[key_mapping].map(data_ey2SUM_group.set_index(key_mapping)[field_rename])
+        df[field_rename]       = df[key_mapping].map(df_group.set_index(key_mapping)[field_rename])
         
-        print(data_ey[field_rename])
+        print(df[field_rename])
         #step3 fillna, replace fill
-        data_ey.loc[(      data_ey[field_rename].isnull() ), field_rename]  = 0.0
+        df.loc[(      df[field_rename].isnull() ), field_rename]  = 0.0
         count                       = count +1
         print(field_rename)
 
