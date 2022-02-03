@@ -239,7 +239,7 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date):
     df = df.rename(columns={'empl_status' : 'สถานะ'}      )
 
     df = df[(df['สถานะ'].isin(['A','L','S']))]
-#     return df
+    return df
     
 
 
