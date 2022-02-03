@@ -358,7 +358,7 @@ def grouptake1_12month(df,  filter_type, key_type_value):
 #         df_group           = df[  (df[key_type]).isin([key_type_value]) & (df[key_m]).isin(newlist)  ] \
 #                                     .groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
         
-        if filter_type = 'ลาพักผ่อนสะสม':
+        if filter_type == 'ลาพักผ่อนสะสม':
                 df_group = df[      (
                                         (df['ประเภทการลาพักผ่อน 3 กลุ่ม'] == filter_type) & 
                                         (df['ABSENCE_DATE_only_month'].isin(newlist))  
