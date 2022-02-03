@@ -269,7 +269,7 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
 
     
     df = df[(df['สถานะ'].isin(['A','L','S']))]
-    df['ปีเกษียณ'] = df['ปีเกษียณ'] - 543
+    df['ปีเกษียณ ค.ศ.'] = df['ปีเกษียณ ค.ศ.'] - 543
     return df
     
     
