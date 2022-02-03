@@ -332,14 +332,14 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     
     
     
-def grouptake1_12month(df,   key_type_value):
+def grouptake1_12month(df,  filter_type, key_type_value):
     listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
     key_mapping = 'emplid'
     key_sum = 'DURATION_DAYS'
     key_m = 'ABSENCE_DATE_only_month'
     key_type = 'ประเภทการลาพักผ่อน 3 กลุ่ม'
     
-#     key_type_value = key_type_value.replace('1.2 ','').replace('2.2 ','').replace('3.2 ','')
+    key_type_value = key_type_value.replace('1.2 ','').replace('2.2 ','').replace('3.2 ','')
     
     newlist = []
     count = 1
@@ -358,7 +358,8 @@ def grouptake1_12month(df,   key_type_value):
 #         df_group           = df[  (df[key_type]).isin([key_type_value]) & (df[key_m]).isin(newlist)  ] \
 #                                     .groupby(key_mapping).agg({key_sum: 'sum'}).reset_index().rename(columns={key_sum:field_rename})
         
-        df_group = df[  (df['ประเภทการลาพักผ่อน 3 กลุ่ม'] == key_type_value) & (df['ABSENCE_DATE_only_month'].isin(newlist))  ].groupby('emplid').agg({'DURATION_DAYS': 'sum'}).reset_index().rename(columns={'DURATION_DAYS':field_rename})
+        df_group = df[  (df['ประเภทการลาพักผ่อน 3 กลุ่ม'] == filter_type) & (df['ABSENCE_DATE_only_month'].isin(newlist))  ] \
+                    .groupby('emplid').agg({'DURATION_DAYS': 'sum'}).reset_index().rename(columns={'DURATION_DAYS':field_rename})
         
         print( 'key_type_value ' + key_type_value)
         print( 'ABSENCE_DATE_only_month ' + newlist)
