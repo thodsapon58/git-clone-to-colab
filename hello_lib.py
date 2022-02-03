@@ -346,7 +346,7 @@ def grouptake1_12month(data_ey,   key_type_value):
     for x1 in listofmonth_int:
         newlist.append(x1)
         
-        field_rename = key_type_value +  ' รวมถึงเดือน ' + x1 + ' (หน่วย : วัน)' 
+        field_rename = key_type_value +  ' รวมสะสมถึงเดือน ' + x1 + ' (หน่วย : วัน)' 
 
         
 #         print(newlist)
