@@ -394,26 +394,31 @@ def parameter_this_year(this_year):
     return this_year
 
 
-def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, this_year ):
+def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, this_year 
+                           
+                           ,field11, field12, field13
+                           ,field21, field22, field23
+                           ,field31, field32, field33
+                           ):
     
 
     
     df_new = df[   df['หน่วยงานที่ดูแล'].isin([f1_value])  & df[f2].isin(['A'])  &  df[f3].isin([f3_value])          ]
 
     
-    this_year_str = str(this_year)
-    this_year_before = str(this_year-1)
-    field11 = '1.1 สิทธิลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
-    field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before
-    field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before
+#     this_year_str = str(this_year)
+#     this_year_before = str(this_year-1)
+#     field11 = '1.1 สิทธิลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
+#     field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before
+#     field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before
     
-    field21 = '2.1 สิทธิลาพักผ่อนประจำปี ' + this_year_str
-    field22 = '2.2 ยอดใช้ไปลาพักผ่อนประจำปี ' + this_year_str
-    field23 = '2.3 คงเหลือลาพักผ่อนปี ' + this_year_str
+#     field21 = '2.1 สิทธิลาพักผ่อนประจำปี ' + this_year_str
+#     field22 = '2.2 ยอดใช้ไปลาพักผ่อนประจำปี ' + this_year_str
+#     field23 = '2.3 คงเหลือลาพักผ่อนปี ' + this_year_str
     
-    field31 = '3.1 สิทธิลาพักผ่อนสะสม'
-    field32 = '3.2 ยอดใช้ไปลาพักผ่อนสะสม'
-    field33 = '3.3 คงเหลือลาพักผ่อนสะสม'
+#     field31 = '3.1 สิทธิลาพักผ่อนสะสม'
+#     field32 = '3.2 ยอดใช้ไปลาพักผ่อนสะสม'
+#     field33 = '3.3 คงเหลือลาพักผ่อนสะสม'
     
         
     df_new = df_new.rename(columns={    '3. กลุ่ม' : 'กลุ่ม',
