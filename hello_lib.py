@@ -194,7 +194,7 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
 
 
 
-def mapping_ey_from_main_EY(df_m, df, col_name, today_date):
+def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,field13,    field21,field22,field23,    field31,field32,field33 ):
     
     df_m['today_date'] = today_date
 
@@ -236,8 +236,38 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date):
     df = df[~df.action_reason.isin(a)]
 
 
-    df = df.rename(columns={'empl_status' : 'สถานะ'}      )
+    this_year_str = str(this_year)
+    this_year_before = str(this_year-1)
+    field11 = '1.1 สิทธิลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
+    field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before
+    field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before
+    
+    field21 = '2.1 สิทธิลาพักผ่อนประจำปี ' + this_year_str
+    field22 = '2.2 ยอดใช้ไปลาพักผ่อนประจำปี ' + this_year_str
+    field23 = '2.3 คงเหลือลาพักผ่อนปี ' + this_year_str
+    
+    field31 = '3.1 สิทธิลาพักผ่อนสะสม'
+    field32 = '3.2 ยอดใช้ไปลาพักผ่อนสะสม'
+    field33 = '3.3 คงเหลือลาพักผ่อนสะสม'
+    
+    
 
+    df = df.rename(columns={
+                            'empl_status' : 'สถานะ',
+                            'empl_status' : field11,
+                            'empl_status' : field12,
+                            'empl_status' : field13,
+
+                            'empl_status' : field21,
+                            'empl_status' : field22,
+                            'empl_status' : field23,
+        
+                            'empl_status' : field31,
+                            'empl_status' : field32,
+                            'empl_status' : field33,
+    })
+
+    
     df = df[(df['สถานะ'].isin(['A','L','S']))]
     return df
     
@@ -334,13 +364,13 @@ def parameter_this_year(this_year):
 
 def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, this_year ):
     
-    this_year_str = str(this_year)
-    this_year_before = str(this_year-1)
+
     
     df_new = df[   df['หน่วยงานที่ดูแล'].isin([f1_value])  & df[f2].isin(['A'])  &  df[f3].isin([f3_value])          ]
 
     
-    
+    this_year_str = str(this_year)
+    this_year_before = str(this_year-1)
     field11 = '1.1 สิทธิลาพักผ่อนยกมาจาก ' + this_year_before + ' ใช้ภายใน 31/03/'+ this_year_str
     field12 = '1.2 ยอดใช้ไปลาพักผ่อนยกมาจาก ' + this_year_before
     field13 = '1.3 คงเหลือลาพักผ่อนยกมาจาก ' + this_year_before
