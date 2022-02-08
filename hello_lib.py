@@ -499,24 +499,24 @@ def run_e_status(df,e):
     
 def fnc_find_this_year_match_function(today_date_month, my_text):
     my_column_name = ''
-    if(today_date_month =='01'):
-        my_column_name = my_text + '01'
-    elif(today_date_month =='02'):
-        my_column_name = my_text + '02'
-    elif(today_date_month =='03'):
-        my_column_name = my_text + '03'
-    elif(today_date_month =='04'):
-        my_column_name = my_text + '04'
-    elif(today_date_month =='05'):
-        my_column_name = my_text + '05'
-    elif(today_date_month =='06'):
-        my_column_name = my_text + '06'
-    elif(today_date_month =='07'):
-        my_column_name = my_text + '07'
-    elif(today_date_month =='08'):
-        my_column_name = my_text + '08'
-    elif(today_date_month =='09'):
-        my_column_name = my_text + '09'
+    if(today_date_month =='1'):
+        my_column_name = my_text + '1'
+    elif(today_date_month =='2'):
+        my_column_name = my_text + '2'
+    elif(today_date_month =='3'):
+        my_column_name = my_text + '3'
+    elif(today_date_month =='4'):
+        my_column_name = my_text + '4'
+    elif(today_date_month =='5'):
+        my_column_name = my_text + '5'
+    elif(today_date_month =='6'):
+        my_column_name = my_text + '6'
+    elif(today_date_month =='7'):
+        my_column_name = my_text + '7'
+    elif(today_date_month =='8'):
+        my_column_name = my_text + '8'
+    elif(today_date_month =='9'):
+        my_column_name = my_text + '9'
     elif(today_date_month =='10'):
         my_column_name = my_text + '10'
     elif(today_date_month =='11'):
@@ -532,26 +532,26 @@ def fnc_find_this_year_match_function(today_date_month, my_text):
 def fnc_find_this_year_match_function_before_month(today_date_month, my_text):
 
     my_column_name = ''
-    if(today_date_month =='01'):
-        my_column_name = my_text + '01'
-    elif(today_date_month =='02'):
-        my_column_name = my_text + '01'
-    elif(today_date_month =='03'):
-        my_column_name = my_text + '02'
-    elif(today_date_month =='04'):
-        my_column_name = my_text + '03'
-    elif(today_date_month =='05'):
-        my_column_name = my_text + '04'
-    elif(today_date_month =='06'):
-        my_column_name = my_text + '05'
-    elif(today_date_month =='07'):
-        my_column_name = my_text + '06'
-    elif(today_date_month =='08'):
-        my_column_name = my_text + '07'
-    elif(today_date_month =='09'):
-        my_column_name = my_text + '08'
+    if(today_date_month =='1'):
+        my_column_name = my_text + '1'
+    elif(today_date_month =='2'):
+        my_column_name = my_text + '1'
+    elif(today_date_month =='3'):
+        my_column_name = my_text + '2'
+    elif(today_date_month =='4'):
+        my_column_name = my_text + '3'
+    elif(today_date_month =='5'):
+        my_column_name = my_text + '4'
+    elif(today_date_month =='6'):
+        my_column_name = my_text + '5'
+    elif(today_date_month =='7'):
+        my_column_name = my_text + '6'
+    elif(today_date_month =='8'):
+        my_column_name = my_text + '7'
+    elif(today_date_month =='9'):
+        my_column_name = my_text + '8'
     elif(today_date_month =='10'):
-        my_column_name = my_text + '09'
+        my_column_name = my_text + '9'
     elif(today_date_month =='11'):
         my_column_name = my_text + '10'
     elif(today_date_month =='12'):
@@ -564,7 +564,8 @@ def fnc_find_this_year_match_function_before_month(today_date_month, my_text):
     
 
 def leave_convert_ceiling05(df, field1, field2, field3 ):
-    listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
+#     listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
+    listofmonth_int = ['1','2','3','4','5','6','7','8','9','10','11','12']
     for x in listofmonth_int:
         field_name_avg = field1 + str(x) + ')'
         field_name = field2 + str(int(x))
