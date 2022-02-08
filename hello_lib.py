@@ -334,7 +334,7 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     
 def grouptake1_12month(df,  filter_type, key_type_value):
 #     listofmonth_int = ['01','02','03','04','05','06','07','08','09','10','11','12']
-    listofmonth_int =  [1,2,3,4,5,6,7,8,9,10,11,12]
+    listofmonth_int = ['1','2','3','4','5','6','7','8','9','10','11','12']
     key_mapping = 'emplid'
     key_sum = 'DURATION_DAYS'
     key_m = 'ABSENCE_DATE_only_month'
@@ -349,7 +349,7 @@ def grouptake1_12month(df,  filter_type, key_type_value):
     for x1 in listofmonth_int:
         newlist.append(x1)
         
-        field_rename = key_type_value +  ' ณ เดือน ' + str(x1) #+ ' (หน่วย:วัน)' 
+        field_rename = key_type_value +  ' ณ เดือน ' + x1 #+ ' (หน่วย:วัน)' 
 
         
 #         print(newlist)
