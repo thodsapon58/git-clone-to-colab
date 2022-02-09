@@ -194,7 +194,9 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
 
 
 
-def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,field13,    field21,field22,field23,    field31,field32,field33  ,   field12_3m, field22_12m  ):
+def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,field13,    field21,field22,field23,    field31,field32,field33  ,  
+                            field12_3m, field22_12m  , field32_12m 
+                           ):
     
     df_m['today_date'] = today_date
 
@@ -264,6 +266,8 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
         
                             'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_CARRYOVER' : field31,
                             'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_TAKE_YTD' : field32,
+                            'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_TAKE_YTD_12m' : field32_12m,
+        
 
     })
 
