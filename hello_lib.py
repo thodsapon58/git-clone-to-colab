@@ -256,11 +256,11 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
                             'empl_status' : 'สถานะ',
                             'ABSV_DYS_CARRYOVER' : field11,
                             'KTB_ABS_TAKE_FW' : field12,
-
+                            'KTB_ABS_TAKE_FW_3M' : field12_3m,
 
                             'ABSV_DYS_EARN_YTD' : field21,
                             'ABSV_DYS_TAKE_YTD' : field22,
-
+                            'ABSV_DYS_TAKE_YTD_12M' : field22_12m,
         
                             'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_CARRYOVER' : field31,
                             'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_TAKE_YTD' : field32,
