@@ -194,7 +194,7 @@ def mapping_ey_from_main(df_m, df, col_name, today_date):
 
 
 
-def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,field13,    field21,field22,field23,    field31,field32,field33 ):
+def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,field13,    field21,field22,field23,    field31,field32,field33  ,   field12_3m, field22_12m  ):
     
     df_m['today_date'] = today_date
 
@@ -407,11 +407,15 @@ def parameter_this_year(this_year):
     return this_year
 
 
-def upload_file_split_sheet(df, id_googlesheet, f1_value, f2, f3, f3_value, my_sheet, my_clean_range, this_year 
+def upload_file_split_sheet(df, id_googlesheet, 
+                            this_year 
                            
                            ,field11, field12, field13
                            ,field21, field22, field23
-                           ,field31, field32, field33
+                           ,field31, field32, field33,
+                            
+                            
+                            f1_value, f2, f3, f3_value, my_sheet, my_clean_range
                            ):
     
 
