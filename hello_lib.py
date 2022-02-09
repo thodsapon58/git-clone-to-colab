@@ -266,7 +266,7 @@ def mapping_ey_from_main_EY(df_m, df, col_name, today_date, field11,field12,fiel
         
                             'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_CARRYOVER' : field31,
                             'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_TAKE_YTD' : field32,
-                            'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_TAKE_YTD_12m' : field32_12m,
+                            'sum ตารางยกยอด 3 ปีจริงที่เริ่มรันตอนสิ้นปี 2564 ABSV_DYS_TAKE_YTD_ALL' : field32_12m,
         
 
     })
