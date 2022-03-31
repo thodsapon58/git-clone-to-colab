@@ -96,13 +96,24 @@ def add_log(
     gauth.credentials = GoogleCredentials.get_application_default()
     drive = GoogleDrive(gauth)
 
+    #สำหรับจัดการ Google sheet
     import gspread
     from gspread_dataframe import set_with_dataframe
     from gspread_dataframe import get_as_dataframe
 
-    gc = gspread.authorize(GoogleCredentials.get_application_default())
+
+    from google.auth import default
+    creds, _ = default()
+
+    gc = gspread.authorize(creds)
+    # gc = gspread.authorize(GoogleCredentials.get_application_default())
+    #สำหรับจัดการ Google sheet---------------------------------
 
 
+    
+    
+    
+    
     wb_logfile= gc.open_by_url(link_log)
     sheet1 = wb_logfile.worksheet('Logfile Report')
     next_row = next_available_row(sheet1)
@@ -305,11 +316,24 @@ def fnc_senddata_to_googlesheet(df , googlesheet_url, sheet_name, column_list, s
     gauth.credentials = GoogleCredentials.get_application_default()
     drive = GoogleDrive(gauth)
 
+    #สำหรับจัดการ Google sheet
     import gspread
     from gspread_dataframe import set_with_dataframe
     from gspread_dataframe import get_as_dataframe
-    gc = gspread.authorize(GoogleCredentials.get_application_default())
 
+
+    from google.auth import default
+    creds, _ = default()
+
+    gc = gspread.authorize(creds)
+    # gc = gspread.authorize(GoogleCredentials.get_application_default())
+    #สำหรับจัดการ Google sheet---------------------------------
+
+
+    
+    
+    
+    
     #wb2 = gc.open_by_url('https://docs.google.com/spreadsheets/d/{}/edit#gid=0'.format(val_4_2))
     wb2 = gc.open_by_url(googlesheet_url)
 
