@@ -685,7 +685,7 @@ def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Fold
       <head></head>
       <body>
         <p>Hi!<br>
-           <b><h1>พี่ดำรันเสร็จแล้วนะ</h1><b><br>
+           <b><h1>พี่ดำรันเสร็จแล้วนะ</h1></b>
            <u><h3>Main</h3></u>
            1. เข้าไปตรวจสอบ Querymain รายเดือนได้ที่ <a href="%s">link</a> (สำหรับคนทั่วไป) <br>
            2. Querymain ที่มีครบทุก field ให้เช็คที่นี้ <a href="%s">link</a> (สำหรับ HRMS) <br>
