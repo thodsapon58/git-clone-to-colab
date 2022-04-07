@@ -669,6 +669,12 @@ def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Fold
     
     #สรุป report
     file4 = "https://docs.google.com/spreadsheets/d/1EaVFbZrNsiE9fT_DXrCoSN9PNZmzXte5WgB0SVT72PI/edit"
+    
+    #ทะเบียนพนักงาน
+    file5 = "https://drive.google.com/drive/folders/15qmbj-jy0A4fIttJMjfYnz_XzPwDJh_8"
+    
+    #file Dashboard
+    file6 = "https://drive.google.com/drive/folders/0B8onEo_a5GOlRTBScGRBY0R5MW8?resourcekey=0-cu-OiVCf02Nwj1cmhmxCLQ"
     # Create the body of the message (a plain-text and an HTML version).
 #     text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
 
@@ -679,15 +685,21 @@ def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Fold
       <head></head>
       <body>
         <p>Hi!<br>
-           พี่ดำรันเสร็จแล้วนะ<br>
+           <b><h1>พี่ดำรันเสร็จแล้วนะ</h1><b><br>
+           <u><h3>Main</h3></u>
            1. เข้าไปตรวจสอบ Querymain รายเดือนได้ที่ <a href="%s">link</a> (สำหรับคนทั่วไป) <br>
            2. Querymain ที่มีครบทุก field ให้เช็คที่นี้ <a href="%s">link</a> (สำหรับ HRMS) <br>
            3. Monitor ทุกวัน <a href="%s">link</a><br>
-           4. สรุป report <a href="%s">link</a><br>
+           
+           <br>
+           <u><h3>หัวข้อรายเดือน</h3></u>
+           4. สรุป report ทีม <a href="%s">link</a><br>
+           5. ทะเบียนพนักงาน <a href="%s">link</a><br>
+           6. file dashboard <a href="%s">link</a><br>
         </p>
       </body>
     </html>
-    """ % (file1, file2, file3, file4)
+    """ % (file1, file2, file3, file4, file5, file6)
 
     # Record the MIME types of both parts - text/plain and text/html.
 #     part1 = MIMEText(text, 'plain')
