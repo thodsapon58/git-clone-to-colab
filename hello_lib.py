@@ -644,43 +644,50 @@ def copy_fileid_to_specific_folder(id1, specific_folderid, rename_file):
     
     
 #reference https://medium.com/@simonprdhm/how-to-send-emails-with-gmail-using-python-f4a8bcb6a9cc
-def send_email_when_finish(user, pass, send_to)
+def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Folder_querymain_ID, Folder_querymain_for_HRMS, file_date )
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
 
     # me == my email address
     # you == recipient's email address
-    me = "thodsapon.thudtayanukul@krungthai.com"
-    you = "thodsapon.thudtayanukul@krungthai.com, montalee.bourung@krungthai.com"
+    me = finished_user
+    you = finished_send_to
 
     # Create message container - the correct MIME type is multipart/alternative.
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = "Link"
+    msg['Subject'] = "[Querymain Run Complete] ข้อมูล ณ วันที่ " + file_date
     msg['From'] = me
     msg['To'] = you
 
+    file1 = "https://drive.google.com/drive/folders/" + Folder_querymain_ID
+    file2 = "https://drive.google.com/drive/folders/" + Folder_querymain_for_HRMS
+    
     # Create the body of the message (a plain-text and an HTML version).
-    text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
+#     text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
+
+
+
     html = """\
     <html>
       <head></head>
       <body>
         <p>Hi!<br>
-           How are you?<br>
-           Here is the <a href="http://www.python.org">link</a> you wanted.
+           พี่ดำรันเสร็จแล้วนะ<br>
+           1. เข้าไปตรวจสอบ Querymain รายเดือนได้ที่ <a href="%s">link</a> <br>
+           2. Querymain ที่มีครบทุก field ให้เช็คที่นี้ <a href="%s">link</a>
         </p>
       </body>
     </html>
-    """
+    """ % (file1, file2)
 
     # Record the MIME types of both parts - text/plain and text/html.
-    part1 = MIMEText(text, 'plain')
+#     part1 = MIMEText(text, 'plain')
     part2 = MIMEText(html, 'html')
 
     # Attach parts into message container.
     # According to RFC 2046, the last part of a multipart message, in this case
     # the HTML message, is best and preferred.
-    msg.attach(part1)
+#     msg.attach(part1)
     msg.attach(part2)
     # Send the message via local SMTP server.
     mail = smtplib.SMTP('smtp.gmail.com', 587)
@@ -689,6 +696,6 @@ def send_email_when_finish(user, pass, send_to)
 
     mail.starttls()
 
-    mail.login(me, "geuotbufgkqiamdp")
+    mail.login(me, finished_pass)
     mail.sendmail(me, you, msg.as_string())
     mail.quit()
