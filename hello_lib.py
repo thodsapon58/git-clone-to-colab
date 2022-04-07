@@ -644,7 +644,7 @@ def copy_fileid_to_specific_folder(id1, specific_folderid, rename_file):
     
     
 #reference https://medium.com/@simonprdhm/how-to-send-emails-with-gmail-using-python-f4a8bcb6a9cc
-def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Folder_querymain_ID, Folder_querymain_for_HRMS, file_date )
+def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Folder_querymain_ID, Folder_querymain_for_HRMS, file_date ):
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
 
