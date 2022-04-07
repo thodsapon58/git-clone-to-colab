@@ -663,6 +663,12 @@ def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Fold
     file1 = "https://drive.google.com/drive/folders/" + Folder_querymain_ID
     file2 = "https://drive.google.com/drive/folders/" + Folder_querymain_for_HRMS
     
+    #monitor
+    file3 = "https://drive.google.com/drive/folders/1rkTLVu8UHJ338bfEuhAiwOVUMEhnsuV5"
+    
+    
+    #สรุป report
+    file4 = "https://docs.google.com/spreadsheets/d/1EaVFbZrNsiE9fT_DXrCoSN9PNZmzXte5WgB0SVT72PI/edit"
     # Create the body of the message (a plain-text and an HTML version).
 #     text = "Hi!\nHow are you?\nHere is the link you wanted:\nhttp://www.python.org"
 
@@ -674,12 +680,14 @@ def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Fold
       <body>
         <p>Hi!<br>
            พี่ดำรันเสร็จแล้วนะ<br>
-           1. เข้าไปตรวจสอบ Querymain รายเดือนได้ที่ <a href="%s">link</a> <br>
-           2. Querymain ที่มีครบทุก field ให้เช็คที่นี้ <a href="%s">link</a>
+           1. เข้าไปตรวจสอบ Querymain รายเดือนได้ที่ <a href="%s">link</a> (สำหรับคนทั่วไป) <br>
+           2. Querymain ที่มีครบทุก field ให้เช็คที่นี้ <a href="%s">link</a> (สำหรับ HRMS) <br>
+           3. Monitor ทุกวัน <a href="%s">link</a><br>
+           4. สรุป report <a href="%s">link</a><br>
         </p>
       </body>
     </html>
-    """ % (file1, file2)
+    """ % (file1, file2, file3, file4)
 
     # Record the MIME types of both parts - text/plain and text/html.
 #     part1 = MIMEText(text, 'plain')
