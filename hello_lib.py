@@ -720,3 +720,10 @@ def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Fold
     mail.login(me, finished_pass)
     mail.sendmail(me, you, msg.as_string())
     mail.quit()
+    
+    
+    
+    
+
+def convert_column_to_date(df, field1):
+    df[field1] = pd.to_datetime(df[field1],format='%d/%m/%Y' , errors='coerce')
