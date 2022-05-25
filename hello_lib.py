@@ -727,3 +727,39 @@ def send_email_when_finish(finished_user, finished_pass, finished_send_to,  Fold
 
 def convert_column_to_date(df, field1):
     df[field1] = pd.to_datetime(df[field1],format='%d/%m/%Y' , errors='coerce')
+    
+    
+    
+    
+    
+def insert_intogooglesheet(url,df, sheet_name, clearspace):
+    !pip install pydrive  --quiet
+
+    from pydrive.auth import GoogleAuth
+    from pydrive.drive import GoogleDrive 
+    from google.colab import auth 
+    from oauth2client.client import GoogleCredentials
+
+
+    auth.authenticate_user()
+    gauth = GoogleAuth()
+    gauth.credentials = GoogleCredentials.get_application_default()
+    drive = GoogleDrive(gauth)
+
+    #สำหรับจัดการ Google sheet
+    import gspread
+    from gspread_dataframe import set_with_dataframe
+    from gspread_dataframe import get_as_dataframe
+    from google.auth import default
+    creds, _ = default()
+
+    gc = gspread.authorize(creds)
+    wb2 = gc.open_by_url(url)
+
+    wb2.values_clear(clearspace.format(sheet_name))
+
+    sheet_destination_sheet = wb2.worksheet(sheet_name)
+    set_with_dataframe(sheet_destination_sheet, df, row=1, include_column_header=True) 
+    
+    
+    
