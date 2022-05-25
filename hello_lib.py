@@ -732,7 +732,7 @@ def convert_column_to_date(df, field1):
     
     
     
-def insert_intogooglesheet(url,df, sheet_name, clearspace):
+def insert_intogooglesheet(url,df, sheet_name, clearspace, my_index_startrow):
 
 
     from pydrive.auth import GoogleAuth
@@ -759,7 +759,7 @@ def insert_intogooglesheet(url,df, sheet_name, clearspace):
     wb2.values_clear(clearspace.format(sheet_name))
 
     sheet_destination_sheet = wb2.worksheet(sheet_name)
-    set_with_dataframe(sheet_destination_sheet, df, row=1, include_column_header=True) 
+    set_with_dataframe(sheet_destination_sheet, df, row=my_index_startrow, include_column_header=True) 
     
     
     
