@@ -762,4 +762,9 @@ def insert_intogooglesheet(url,df, sheet_name, clearspace, my_index_startrow):
     set_with_dataframe(sheet_destination_sheet, df, row=my_index_startrow, include_column_header=True) 
     
     
+def create_list_fromdaterange(sdate, edate):
+
+    list1 = pd.date_range(sdate,edate-timedelta(days=1),freq='d')
+    
+    df_list1  = pd.DataFrame(list1)
     
