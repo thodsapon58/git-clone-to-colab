@@ -767,4 +767,5 @@ def create_list_fromdaterange(sdate, edate):
     list1 = pd.date_range(sdate,edate-timedelta(days=1),freq='d')
     
     df_list1  = pd.DataFrame(list1)
+    return df_list1
     
