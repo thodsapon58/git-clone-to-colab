@@ -764,7 +764,7 @@ def insert_intogooglesheet(url,df, sheet_name, clearspace, my_index_startrow):
     
 def create_list_fromdaterange(sdate, edate):
     from datetime import date, timedelta
-    list1 = pd.date_range(sdate,edate-timedelta(days=0),freq='d')
+    list1 = pd.date_range(sdate,edate-timedelta(days=0),freq='B')
     
     df_list1  = pd.DataFrame(list1)
     return df_list1
